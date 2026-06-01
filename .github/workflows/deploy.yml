@@ -1,4 +1,4 @@
-name: Deploy deshart.it
+name: Deploy senzalievito.com
 
 on:
   push:
