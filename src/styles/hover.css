@@ -1,0 +1,83 @@
+/* =========================================================
+   HOVER.CSS
+   Interaction + Accessibility Hover States
+========================================================= */
+
+/* =========================================================
+   BASE TRANSITIONS
+========================================================= */
+
+:where(a, button, .bento-box, .glass-card, .interactive) {
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    transform var(--duration-fast) ease,
+    opacity var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+/* =========================================================
+   POINTER FEEDBACK
+========================================================= */
+
+:where(a, button, [role="button"], .interactive):hover {
+  cursor: pointer;
+}
+
+/* =========================================================
+   UNIVERSAL HOVER
+========================================================= */
+
+:where(button, .bento-box, .glass-card, .interactive):hover {
+  border-color: var(--glass-border-strong);
+  background: var(--surface-elevated);
+
+  box-shadow:
+    var(--glass-shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   ACTIVE / PRESSED
+========================================================= */
+
+:where(button, [role="button"], .interactive):active {
+  transform: scale(0.98);
+}
+
+/* =========================================================
+   LINK HOVER
+========================================================= */
+
+a {
+  color: var(--text-link);
+}
+
+a:hover {
+  color: var(--text-hover);
+  text-decoration-thickness: 0.12em;
+}
+
+/* =========================================================
+   DISABLED HOVER BLOCK
+========================================================= */
+
+:where(button:disabled, [aria-disabled="true"]):hover {
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) {
+  :where(.bento-box, .glass-card, button, .interactive):hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

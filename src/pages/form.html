@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <!-- =====================================================
+         DOCUMENT
+    ===================================================== -->
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Contatti | Ultra Liquid Rose</title>
+
+    <meta
+      name="description"
+      content="Contatta Ultra Liquid Rose per informazioni, preventivi, collaborazioni o richieste di supporto. Compila il modulo e ricevi una risposta nel più breve tempo possibile."
+    />
+
+    <meta name="robots"  content="noindex,nofollow" />
+
+    <link rel="canonical" href="https://example.com/contatti" />
+
+    <!-- =====================================================
+         PERFORMANCE
+    ===================================================== -->
+
+    <link rel="preload" href="/style.css" as="style" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <!-- =====================================================
+         THEME
+    ===================================================== -->
+
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ===================================================== -->
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:locale" content="it_IT" />
+
+    <meta property="og:site_name" content="Ultra Liquid Rose" />
+
+    <meta property="og:title" content="Contatti | Ultra Liquid Rose" />
+
+    <meta
+      property="og:description"
+      content="Richiedi informazioni, un preventivo o assistenza tramite il modulo di contatto."
+    />
+
+    <meta property="og:url" content="https://example.com/contatti" />
+
+    <meta
+      property="og:image"
+      content="https://example.com/assets/og/contatti.jpg"
+    />
+
+    <meta property="og:image:alt" content="Pagina contatti Ultra Liquid Rose" />
+
+    <!-- =====================================================
+         TWITTER / X
+    ===================================================== -->
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:title" content="Contatti | Ultra Liquid Rose" />
+
+    <meta
+      name="twitter:description"
+      content="Compila il modulo di contatto per informazioni, preventivi e supporto."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://example.com/assets/og/contatti.jpg"
+    />
+
+    <!-- =====================================================
+         ICONS
+    ===================================================== -->
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+  <body>
+    <header
+      style="
+        text-align: center;
+        padding: var(--spacing-xl) var(--spacing-inline);
+      "
+    >
+      <h1 style="color: var(--color-primary); font-size: var(--text-2xl)">
+        Contattami
+      </h1>
+      <p style="opacity: 0.8">
+        Compila il form per ricevere una risposta entro 24 ore.
+      </p>
+    </header>
+
+    <main class="max-width">
+      <section>
+        <form action="/api/contact" method="POST" novalidate>
+          <fieldset>
+            <legend class="pill pill-primary">Dati personali</legend>
+
+            <div class="form-field">
+              <label for="name" required>Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Es. Mario Rossi"
+                required
+                minlength="2"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="email" required>Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="mario.rossi@esempio.com"
+                required
+                autocomplete="email"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend class="pill pill-primary">Dettagli Richiesta</legend>
+
+            <div class="form-field">
+              <label for="subject">Oggetto della richiesta</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>
+                  Seleziona un'opzione...
+                </option>
+                <option value="info">Richiesta informazioni</option>
+                <option value="preventivo">Preventivo</option>
+                <option value="supporto">Supporto tecnico</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="message" required>Il tuo messaggio</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Come posso aiutarti?"
+                required
+                minlength="10"
+                aria-describedby="message-hint"
+              ></textarea>
+              <span id="message-hint" class="form-hint"
+                >Sii il più dettagliato possibile (min. 10 caratteri).</span
+              >
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend class="pill pill-primary">Consenso</legend>
+
+            <div class="form-field">
+              <label class="choice-group">
+                <input
+                  type="checkbox"
+                  name="privacy"
+                  required
+                  aria-describedby="privacy-help"
+                />
+                <span
+                  >Accetto la
+                  <a
+                    href="#"
+                    style="color: var(--color-primary); font-weight: bold"
+                    >Privacy Policy</a
+                  ></span
+                >
+              </label>
+              <p id="privacy-help" class="form-hint">
+                I tuoi dati saranno trattati nel rispetto del GDPR e usati solo
+                per questa comunicazione.
+              </p>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="btn btn-cta btn-uppercase">
+            Invia Messaggio
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

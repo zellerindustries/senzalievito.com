@@ -1,0 +1,98 @@
+/* =========================
+   SITE FOOTER (OPTIMIZED)
+========================= */
+
+#site-footer {
+  margin: var(--spacing-xl) auto var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+
+  text-align: center;
+
+  isolation: isolate;
+  contain: layout paint;
+}
+
+#site-footer > * {
+  width: 100%;
+}
+
+/* =========================
+   FOOTER NAV
+========================= */
+
+#footer-nav {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* base link style (single source of truth) */
+#footer-nav a {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+
+  transition: color var(--duration-fast) var(--ease-standard);
+  will-change: color;
+}
+
+#footer-nav a:hover {
+  color: var(--color-primary);
+}
+
+/* =========================
+   LEGAL
+========================= */
+
+#footer-legal {
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-size: var(--text-xs);
+}
+
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+#footer-social {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+#footer-social a {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  opacity: 0.7;
+
+  transition:
+    opacity var(--duration-fast),
+    transform var(--duration-fast);
+
+  will-change: transform, opacity;
+}
+
+#footer-social a:hover {
+  opacity: 1;
+  transform: translate3d(0, -2px, 0);
+}
+
+/* =========================
+   FOOTER SECTION TITLE
+========================= */
+
+#site-footer h4 {
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+
+  border-bottom: 1px solid var(--border-glass);
+  color: var(--text-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+}

@@ -1,0 +1,84 @@
+/* =========================
+   CORE LIQUID GLASS
+========================= */
+.liquid-glass {
+  position: relative;
+  isolation: isolate;
+
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+
+  /* Fallback layout safety */
+  min-width: 0;
+  width: 100%;
+
+  /* Background animation setup */
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+
+  /* Animazioni */
+  animation:
+    liquid 8s var(--ease-standard) infinite alternate,
+    liquid-pulse 4s ease-in-out infinite;
+
+  /* Transizioni (solo proprietà effettivamente mutate) */
+  transition: transform var(--duration-base) var(--ease-standard);
+
+  /* Performance hint */
+  will-change: transform, background-position;
+}
+
+/* Layer Effetto Vetro (Frosted Overlay) */
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  border-radius: inherit;
+  border: 1px solid var(--glass-border);
+
+  /* Riflesso superficiale */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.05)
+  );
+
+  pointer-events: none;
+}
+
+/* Gestione Contenuto Interno */
+.liquid-glass > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   VARIANTI DI COLORE
+========================= */
+.liquid-glass.v-sunset {
+  background-image: var(--gradient-sunset);
+}
+
+.liquid-glass.v-cyber {
+  background-image: var(--gradient-cyber);
+}
+
+.liquid-glass.v-deep {
+  background-image: linear-gradient(-45deg, #1c0f26, #3d1c52, #521c3e, #1c0f26);
+}
+
+/* =========================
+   INTERAZIONI
+========================= */
+.liquid-glass:hover {
+  animation:
+    liquid 4s var(--ease-standard) infinite alternate,
+    liquid-pulse 2s ease-in-out infinite;
+}
+
+.liquid-glass:active {
+  transform: translateY(-2px);
+}

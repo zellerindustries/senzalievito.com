@@ -1,0 +1,68 @@
+/* =========================
+   BASE PILL (OPTIMIZED)
+========================= */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  justify-content: center;
+
+  padding: var(--spacing-xs) var(--spacing-sm);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+
+  border-radius: var(--radius-pill);
+  border: var(--pill-border-width) solid var(--glass-border);
+
+  background: var(--surface-base);
+  color: var(--text-secondary);
+
+  box-shadow: var(--glass-inner-border), var(--glass-shadow);
+
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  isolation: isolate;
+}
+
+/* glass highlight (che ora è parametrico) */
+.pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--glass-reflection);
+  opacity: var(--overlay-glass-opacity);
+  pointer-events: none;
+}
+
+/* =========================
+   VARIANTS
+========================= */
+
+.pill-primary {
+  background: var(--gradient-primary);
+  color: var(--text-inverse);
+}
+
+.pill-secondary {
+  background: var(--color-secondary);
+  color: var(--text-secondary);
+}
+
+.pill-accent {
+  background: var(--gradient-accent);
+  color: var(--text-on-accent);
+}
+
+.pill-highlight {
+  background: var(--color-highlight);
+  color: var(--text-secondary);
+}
+
+/* shared optimization */
+:is(.pill-primary, .pill-secondary, .pill-accent, .pill-highlight) {
+  border-color: transparent;
+}

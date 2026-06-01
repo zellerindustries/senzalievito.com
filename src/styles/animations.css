@@ -1,0 +1,99 @@
+/* =========================================================
+   BUTTON ANIMATIONS (OPTIMIZED)
+========================================================= */
+
+/* =========================================================
+   LIQUID FLOW (GPU FRIENDLY)
+========================================================= */
+
+@keyframes liquid {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================================
+   LIQUID PULSE (REDUCED SHADOW COMPLEXITY)
+   -> fewer layers = lower paint cost
+========================================================= */
+
+@keyframes liquid-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 14px rgba(255, 150, 200, 0.18);
+  }
+
+  50% {
+    box-shadow:
+      0 0 26px rgba(255, 150, 200, 0.38),
+      var(--glass-inner-border);
+  }
+}
+
+/* =========================================================
+   BOUNCE (SIMPLIFIED KEYFRAMES)
+========================================================= */
+
+@keyframes btn-bounce {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  70% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   FLOAT DRIFT (LOW COST)
+========================================================= */
+
+@keyframes btn-float-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* =========================================================
+   GLOW BREATHING (FILTER OPTIMIZED)
+   NOTE: filter is expensive → keep subtle
+========================================================= */
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+
+  50% {
+    filter: brightness(1.05) saturate(1.1);
+  }
+}
+
+/* =========================================================
+   SHIMMER (GPU SAFE MOTION)
+========================================================= */
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%) rotate(12deg);
+  }
+  100% {
+    transform: translateX(120%) rotate(12deg);
+  }
+}

@@ -1,0 +1,107 @@
+/* =========================
+   RESPONSIVE / MEDIA QUERIES
+========================= */
+
+/* ------------------------
+   Mobile (Smartphone)
+------------------------ */
+@media (max-width: 640px) {
+  /*
+    .container {
+        padding-block: var(--spacing-lg);
+    }
+    */
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .bento-grid-columns .bento-item-4,
+  .bento-grid-columns .bento-item-6,
+  .bento-grid-columns .bento-item-8,
+  .bento-grid-columns .bento-item-12 {
+    grid-column: span 12;
+  }
+
+  .bento-feature,
+  .box-feature {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  body {
+    font-size: var(--text-sm);
+  }
+
+  h1 {
+    font-size: var(--text-xl);
+  }
+
+  h2 {
+    font-size: var(--text-lg);
+  }
+
+  h3 {
+    font-size: var(--text-md);
+  }
+
+  h4 {
+    font-size: var(--text-sm);
+  }
+
+  h5 {
+    font-size: var(--text-xs);
+  }
+
+  p {
+    font-size: var(--text-sm);
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ------------------------
+   Tablet
+------------------------ */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .bento-grid-columns .bento-item-4 {
+    grid-column: span 6;
+  }
+
+  .bento-grid-columns .bento-item-6 {
+    grid-column: span 6;
+  }
+
+  .bento-grid-columns .bento-item-8,
+  .bento-grid-columns .bento-item-12 {
+    grid-column: span 12;
+  }
+
+  .bento-feature,
+  .box-feature {
+    flex-direction: column;
+  }
+
+  #links ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ------------------------
+   Desktop (Small Laptops)
+------------------------ */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+  }
+}

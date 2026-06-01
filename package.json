@@ -1,0 +1,23 @@
+{
+  "name": "senza-lievito",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && npx serve ./dist",
+    "build": "npx mz b",
+    "format": "npx prettier --write \"./src\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1",
+    "minimaz-cli": "^0.5.1",
+    "serve": "^14.2.6"
+  },
+  "devDependencies": {
+    "prettier": "3.8.3"
+  }
+}

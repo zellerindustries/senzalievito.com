@@ -1,0 +1,201 @@
+/* =========================
+   HEADER (FLOATING GLASS)
+========================= */
+
+#site-header {
+  position: sticky;
+  top: var(--spacing-md);
+
+  width: calc(100% - (var(--spacing-md) * 2));
+  /* Scorciatoia moderna per margin-left e margin-right */
+  margin-inline: auto;
+  margin-bottom: var(--spacing-md);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: clamp(56px, 8vh, 80px);
+  padding: var(--spacing-sm);
+  box-sizing: border-box;
+
+  -webkit-backdrop-filter: var(--backdrop-filter);
+  backdrop-filter: var(--backdrop-filter);
+  background: var(--header-bg);
+
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+
+  overflow: hidden;
+
+  z-index: 1000;
+}
+
+/* --- THE FIX --- */
+/* 1. Ottimizzato il selettore (rimosso il testo dell'aria-label che appesantisce il parsing) */
+#site-header > a[aria-label^="Homepage"] {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  height: auto;
+}
+
+/* 2. Ottimizzata la specificità: rimosso l'inutile ID padre prima di #site-logo */
+#site-logo {
+  display: block;
+  height: 100%;
+  max-height: 100%;
+
+  width: auto;
+  max-width: 250px;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Nav Desktop */
+#site-header nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-grow: 1;
+  justify-content: flex-end; /* 'flex-end' garantisce massima compatibilità rispetto a 'end' */
+}
+
+/* Toggle Menu */
+#site-header .menu-toggle {
+  display: none;
+  color: var(--text-primary);
+  font-size: var(--text-xl);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* =========================
+   MOBILE NAVIGATION (BUBBLE POP EFFECT)
+========================= */
+
+@media (max-width: 768px) {
+  #site-header {
+    justify-content: space-between;
+    overflow: visible;
+  }
+
+  #site-header .menu-toggle {
+    display: block;
+  }
+
+  #site-header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Larghezza esplicita al posto del calcolo con right */
+    height: 100vh;
+
+    background: var(--header-bg);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* PREPARAZIONE GPU: Comunica al browser cosa cambierà */
+    will-change: transform, visibility;
+
+    /* OTTIMIZZAZIONE CORE: Spostato fuori dallo schermo usando transform (Composite Layer) */
+    transform: translateX(100%);
+
+    /* Transizione fluida guidata dalla GPU */
+    transition:
+      transform 0.4s cubic-bezier(0.77, 0, 0.175, 1),
+      visibility 0.4s;
+    visibility: hidden;
+
+    z-index: 9999;
+  }
+
+  /* Stato Nav Attiva */
+  #site-header nav.is-active {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  /* --- EFFETTO BUBBLE POP SUI BOTTONI --- */
+  #site-header nav .btn {
+    opacity: 0;
+    transform: scale(0.4) translateY(-40px);
+
+    /* Suggerisce l'ottimizzazione per i singoli elementi a cascata */
+    will-change: transform, opacity;
+
+    transition:
+      opacity 0.4s ease,
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Stato finale quando la nav è aperta */
+  #site-header nav.is-active .btn {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Ritardi sequenziali (Staggered Delay) invariati, ora gestiti in accelerazione hardware */
+  #site-header nav .btn:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  #site-header nav .btn:nth-child(2) {
+    transition-delay: 0.18s;
+  }
+  #site-header nav .btn:nth-child(3) {
+    transition-delay: 0.26s;
+  }
+  #site-header nav .btn:nth-child(4) {
+    transition-delay: 0.34s;
+  }
+  #site-header nav .btn:nth-child(5) {
+    transition-delay: 0.42s;
+  }
+  #site-header nav .btn:nth-child(6) {
+    transition-delay: 0.5s;
+  }
+}
+
+/* =========================
+   MENU OVERLAY
+========================= */
+
+#menu-overlay {
+  position: fixed;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1)
+  );
+
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
+  will-change: opacity, visibility;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+
+  z-index: 900;
+}
+
+#menu-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
