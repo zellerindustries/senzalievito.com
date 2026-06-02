@@ -80,7 +80,6 @@
 @media (max-width: 768px) {
   #site-header {
     justify-content: space-between;
-    overflow: visible;
   }
 
   #site-header .menu-toggle {

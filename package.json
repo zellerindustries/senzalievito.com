@@ -14,10 +14,10 @@
   "type": "commonjs",
   "dependencies": {
     "bootstrap-icons": "^1.13.1",
-    "minimaz-cli": "^0.5.1",
-    "serve": "^14.2.6"
+    "minimaz-cli": "^0.5.1"
   },
   "devDependencies": {
-    "prettier": "3.8.3"
+    "prettier": "3.8.3",
+    "serve": "^14.2.6"
   }
 }
