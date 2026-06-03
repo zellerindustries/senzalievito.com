@@ -1,4 +1,4 @@
-name: Deploy senzalievito.com
+name: Deploy
 
 on:
   push:
