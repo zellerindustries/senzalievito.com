@@ -7,7 +7,6 @@
   top: var(--spacing-md);
 
   width: calc(100% - (var(--spacing-md) * 2));
-  /* Scorciatoia moderna per margin-left e margin-right */
   margin-inline: auto;
   margin-bottom: var(--spacing-md);
 
@@ -26,31 +25,10 @@
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-md);
 
-  overflow: hidden;
+  /* Rimosso overflow: hidden da qui per spostarlo in una logica desktop,
+     altrimenti rompe il menu a schermo intero su mobile */
 
   z-index: 1000;
-}
-
-/* --- THE FIX --- */
-/* 1. Ottimizzato il selettore (rimosso il testo dell'aria-label che appesantisce il parsing) */
-#site-header > a[aria-label^="Homepage"] {
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  height: auto;
-}
-
-/* 2. Ottimizzata la specificità: rimosso l'inutile ID padre prima di #site-logo */
-#site-logo {
-  display: block;
-  height: 100%;
-  max-height: 100%;
-
-  width: auto;
-  max-width: 250px;
-
-  object-fit: contain;
-  object-position: left center;
 }
 
 /* Nav Desktop */
@@ -59,7 +37,24 @@
   align-items: center;
   gap: var(--spacing-md);
   flex-grow: 1;
-  justify-content: flex-end; /* 'flex-end' garantisce massima compatibilità rispetto a 'end' */
+  justify-content: flex-end;
+}
+
+#site-header > a[aria-label^="Homepage"] {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  height: 100%; /* FIXED: Forza il link a prendere tutta l'altezza del clamp dell'header */
+}
+
+#site-logo {
+  display: block;
+  height: 100%;
+  max-height: 100%;
+  width: auto;
+  max-width: 250px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 /* Toggle Menu */
@@ -73,6 +68,13 @@
   z-index: 10000;
 }
 
+/* Media Query Desktop-only per l'overflow (Evita glitch visivi pre-animazione) */
+@media (min-width: 769px) {
+  #site-header {
+    overflow: hidden; /* FIXED: Mantiene l'effetto pulito solo dove serve */
+  }
+}
+
 /* =========================
    MOBILE NAVIGATION (BUBBLE POP EFFECT)
 ========================= */
@@ -80,6 +82,7 @@
 @media (max-width: 768px) {
   #site-header {
     justify-content: space-between;
+    overflow: visible !important; /* FIXED: Cruciale per non far tagliare il menu fixed */
   }
 
   #site-header .menu-toggle {
@@ -90,7 +93,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Larghezza esplicita al posto del calcolo con right */
+    width: 100%;
     height: 100vh;
 
     background: var(--header-bg);
@@ -101,14 +104,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: var(
+      --spacing-lg
+    ); /* FIXED: Spaziatura verticale più generosa su mobile */
 
-    /* PREPARAZIONE GPU: Comunica al browser cosa cambierà */
     will-change: transform, visibility;
-
-    /* OTTIMIZZAZIONE CORE: Spostato fuori dallo schermo usando transform (Composite Layer) */
     transform: translateX(100%);
 
-    /* Transizione fluida guidata dalla GPU */
     transition:
       transform 0.4s cubic-bezier(0.77, 0, 0.175, 1),
       visibility 0.4s;
@@ -127,8 +129,6 @@
   #site-header nav .btn {
     opacity: 0;
     transform: scale(0.4) translateY(-40px);
-
-    /* Suggerisce l'ottimizzazione per i singoli elementi a cascata */
     will-change: transform, opacity;
 
     transition:
@@ -136,13 +136,12 @@
       transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  /* Stato finale quando la nav è aperta */
   #site-header nav.is-active .btn {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
 
-  /* Ritardi sequenziali (Staggered Delay) invariati, ora gestiti in accelerazione hardware */
+  /* Ritardi sequenziali (Staggered Delay) */
   #site-header nav .btn:nth-child(1) {
     transition-delay: 0.1s;
   }
@@ -177,8 +176,9 @@
 
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0.1)
+    rgba(255, 255, 255, 0.1),
+    /* FIXED: Abbassata l'opacità per rendere il blur più elegante */
+    rgba(255, 255, 255, 0.05)
   );
 
   -webkit-backdrop-filter: blur(8px);

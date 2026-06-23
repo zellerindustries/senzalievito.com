@@ -15,12 +15,6 @@
     </url>
 
     <url>
-        <loc>https://senzalievito.com/portfolio</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
-    <url>
         <loc>https://senzalievito.com/contatti</loc>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
