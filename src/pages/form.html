@@ -1,94 +1,42 @@
 <!doctype html>
 <html lang="it">
   <head>
-    <!-- =====================================================
-         DOCUMENT
-    ===================================================== -->
-
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Contatti | Ultra Liquid Rose</title>
+    <title>Contatti | Senza Lievito – Valentina Battafarano</title>
 
     <meta
       name="description"
-      content="Contatta Ultra Liquid Rose per informazioni, preventivi, collaborazioni o richieste di supporto. Compila il modulo e ricevi una risposta nel più breve tempo possibile."
+      content="Contatta Valentina Battafarano per una consulenza strategica. Richiedi informazioni su Digital Strategy, Social Media, SEO e percorsi di formazione."
     />
+    <meta name="robots" content="index, follow" />
 
-    <meta name="robots" content="noindex,nofollow" />
-
-    <link rel="canonical" href="https://example.com/contatti" />
-
-    <!-- =====================================================
-         PERFORMANCE
-    ===================================================== -->
-
+    <link rel="canonical" href="https://senzalievito.com/form.html" />
     <link rel="preload" href="/style.css" as="style" />
-
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- =====================================================
-         THEME
-    ===================================================== -->
-
     <meta name="theme-color" content="#ffffff" />
-
     <meta name="color-scheme" content="light dark" />
 
-    <!-- =====================================================
-         OPEN GRAPH
-    ===================================================== -->
-
     <meta property="og:type" content="website" />
-
     <meta property="og:locale" content="it_IT" />
-
-    <meta property="og:site_name" content="Ultra Liquid Rose" />
-
-    <meta property="og:title" content="Contatti | Ultra Liquid Rose" />
-
+    <meta property="og:site_name" content="Senza Lievito" />
+    <meta
+      property="og:title"
+      content="Contatti | Senza Lievito – Valentina Battafarano"
+    />
     <meta
       property="og:description"
-      content="Richiedi informazioni, un preventivo o assistenza tramite il modulo di contatto."
+      content="Contatta Valentina Battafarano per una consulenza strategica. Richiedi informazioni su Digital Strategy, Social Media, SEO e percorsi di formazione."
     />
-
-    <meta property="og:url" content="https://example.com/contatti" />
-
+    <meta property="og:url" content="https://senzalievito.com/form.html" />
     <meta
       property="og:image"
-      content="https://example.com/assets/og/contatti.jpg"
+      content="https://senzalievito.com/assets/og/home.jpg"
     />
 
-    <meta property="og:image:alt" content="Pagina contatti Ultra Liquid Rose" />
-
-    <!-- =====================================================
-         TWITTER / X
-    ===================================================== -->
-
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <meta name="twitter:title" content="Contatti | Ultra Liquid Rose" />
-
-    <meta
-      name="twitter:description"
-      content="Compila il modulo di contatto per informazioni, preventivi e supporto."
-    />
-
-    <meta
-      name="twitter:image"
-      content="https://example.com/assets/og/contatti.jpg"
-    />
-
-    <!-- =====================================================
-         ICONS
-    ===================================================== -->
-
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script src="/script.js" defer></script>
   </head>
 
   <body>
@@ -99,21 +47,22 @@
       "
     >
       <h1 style="color: var(--color-primary); font-size: var(--text-2xl)">
-        Contattami
+        Parliamo del tuo progetto
       </h1>
-      <p style="opacity: 0.8">
-        Compila il form per ricevere una risposta entro 24 ore.
+      <p style="opacity: 0.8; max-width: 600px; margin: 0 auto">
+        Compila il form per strutturare una strategia digitale chiara, efficace
+        e senza fronzoli.
       </p>
     </header>
 
     <main class="max-width">
       <section>
-        <form action="/api/contact" method="POST" novalidate>
+        <form id="contact-form" action="/api/contact" method="POST" novalidate>
           <fieldset>
             <legend class="pill pill-primary">Dati personali</legend>
 
             <div class="form-field">
-              <label for="name" required>Nome</label>
+              <label for="name">Nome e Cognome *</label>
               <input
                 type="text"
                 id="name"
@@ -126,12 +75,12 @@
             </div>
 
             <div class="form-field">
-              <label for="email" required>Email</label>
+              <label for="email">Email aziendale *</label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="mario.rossi@esempio.com"
+                placeholder="nome@azienda.it"
                 required
                 autocomplete="email"
               />
@@ -142,23 +91,29 @@
             <legend class="pill pill-primary">Dettagli Richiesta</legend>
 
             <div class="form-field">
-              <label for="subject">Oggetto della richiesta</label>
+              <label for="subject">Di cosa ha bisogno il tuo business? *</label>
               <select id="subject" name="subject" required>
                 <option value="" disabled selected>
                   Seleziona un'opzione...
                 </option>
-                <option value="info">Richiesta informazioni</option>
-                <option value="preventivo">Preventivo</option>
-                <option value="supporto">Supporto tecnico</option>
+                <option value="digital-strategy">Digital Strategy</option>
+                <option value="social-media">Social Media Management</option>
+                <option value="seo-content">SEO & Content Marketing</option>
+                <option value="consulenza-team">
+                  Formazione o Supporto Team
+                </option>
+                <option value="altro">Altro</option>
               </select>
             </div>
 
             <div class="form-field">
-              <label for="message" required>Il tuo messaggio</label>
+              <label for="message"
+                >Raccontami brevemente il tuo progetto *</label
+              >
               <textarea
                 id="message"
                 name="message"
-                placeholder="Come posso aiutarti?"
+                placeholder="Obiettivi, criticità o scadenze..."
                 required
                 minlength="10"
                 aria-describedby="message-hint"
@@ -176,6 +131,7 @@
               <label class="choice-group">
                 <input
                   type="checkbox"
+                  id="privacy"
                   name="privacy"
                   required
                   aria-describedby="privacy-help"
@@ -191,15 +147,52 @@
               </label>
               <p id="privacy-help" class="form-hint">
                 I tuoi dati saranno trattati nel rispetto del GDPR e usati solo
-                per questa comunicazione.
+                per rispondere a questa richiesta di contatto.
               </p>
             </div>
           </fieldset>
 
-          <button type="submit" class="btn btn-cta btn-uppercase">
-            Invia Messaggio
+          <div style="display: none" aria-hidden="true">
+            <label for="bot-field">Non compilare se sei umano:</label>
+            <input
+              type="text"
+              id="bot-field"
+              name="bot-field"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="btn btn-cta btn-uppercase"
+          >
+            Invia la richiesta
           </button>
+
+          <div id="form-status" aria-live="polite"></div>
         </form>
+
+        <div
+          id="form-success"
+          hidden
+          style="text-align: center; padding: var(--spacing-xl) 0"
+        >
+          <h2>Richiesta Ricevuta!</h2>
+          <p>
+            Grazie per avermi contattato. Analizzerò i dettagli e ti risponderò
+            al più presto.
+          </p>
+          <a
+            href="/"
+            id="back-to-home"
+            class="btn btn-cta"
+            style="margin-top: var(--spacing-md); display: inline-block"
+          >
+            Torna alla Home
+          </a>
+        </div>
       </section>
     </main>
 
